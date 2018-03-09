@@ -1,7 +1,9 @@
-/* global THREE */
-
 import React, {Component} from 'react';
 import './App.css';
+import * as THREE from "three";
+import NRRDLoader from '../node_modules/three/examples/js/loaders/NRRDLoader';
+import TrackballControls from '../node_modules/three/examples/js/controls/TrackballControls';
+
 
 class App extends Component {
     constructor(props) {
@@ -27,7 +29,7 @@ class App extends Component {
 
         scene.add(camera);
 
-        const loader = new THREE.NRRDLoader();
+        const loader = new NRRDLoader();
         loader.load("models/columnasegmentado01.nrrd", function (volume) {
             let sliceZ;
 
@@ -56,7 +58,7 @@ class App extends Component {
         this.camera = camera;
         this.renderer = renderer;
 
-        let controls = new THREE.TrackballControls(camera, renderer.domElement);
+        let controls = new TrackballControls(camera, renderer.domElement);
         controls.rotateSpeed = 0;
         controls.zoomSpeed = 5;
         controls.panSpeed = 2;
