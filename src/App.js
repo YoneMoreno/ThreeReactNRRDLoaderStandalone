@@ -48,7 +48,8 @@ class App extends Component {
 
 
         renderer.setClearColor('#000000');
-
+        renderer.info.autoReset = false;
+        console.log(renderer.info);
 
         this.scene = scene;
         window.scene = scene;
@@ -73,6 +74,12 @@ class App extends Component {
         this.stop();
         this.mount.removeChild(this.renderer.domElement)
     }
+
+    // Perhaps this is added for performance reasons?
+    shouldComponentUpdate() {
+        return false
+    }
+
 
     start() {
         if (!this.frameId) {
